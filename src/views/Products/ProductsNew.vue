@@ -3,7 +3,7 @@
     <h1>New Product</h1>
     <form v-on:submit.prevent="createProduct()">
       <ul>
-        <li :v-for="error in errors">{{ error }}</li>
+        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
       <a href="/login">Login</a>
       Name:
@@ -13,7 +13,7 @@
       Description:
       <input type="text" v-model="newProductDescription" />
       Supplier:
-      <input type="text" v-model="newProductSupplier" />
+      <input type="text" v-model="newProductSupplierId" />
       Image Url:
       <input type="text" v-model="newProductImage" />
       <input type="submit" value="Create" />
@@ -32,7 +32,7 @@ export default {
       newProductName: "",
       newProductPrice: "",
       newProductDescription: "",
-      newProductSupplier: "",
+      newProductSupplierId: "",
       newProductImage: "",
       errors: [],
     };
@@ -44,8 +44,8 @@ export default {
         name: this.newProductName,
         price: this.newProductPrice,
         description: this.newProductDescription,
-        supplier: this.newProductSupplier,
-        primary_image_url: this.newProductImage,
+        supplier_id: this.newProductSupplierId,
+        image: this.newProductImage,
       };
       axios
         .post("/api/products", params)
