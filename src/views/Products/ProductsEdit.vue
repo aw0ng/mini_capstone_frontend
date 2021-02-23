@@ -3,7 +3,7 @@
     <h1>Edit Product</h1>
     <form v-on:submit.prevent="updateProduct(product)">
       <ul>
-        <li :v-for="error in errors">{{ error }}</li>
+        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
       Name:
       <input type="text" v-model="product.name" />
